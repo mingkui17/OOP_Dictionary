@@ -1,10 +1,11 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DictionaryManagement {
-    Dictionary dic = new Dictionary();
-    String en, vi;
+    public ArrayList<Word> words = new ArrayList<>();
+    private String en, vi;
 
     public Word insertFromCommandline(Scanner sc) {
         Word w = new Word();
@@ -16,7 +17,6 @@ public class DictionaryManagement {
     }
 
     public void insertFromFile() {
-
         try {
             Scanner scf = new Scanner(new File("dictionaries.txt"));
             while (scf.hasNextLine()){
@@ -27,7 +27,7 @@ public class DictionaryManagement {
                 w.setWord_target(en);
                 vi = s.substring(x + 1);
                 w.setWord_explain(vi);
-                dic.words.add(w);
+                words.add(w);
             }
             scf.close();
         } catch (Exception e) {
@@ -35,8 +35,8 @@ public class DictionaryManagement {
         }
     }
 
-    public void dictionaryLookup (String s) {
-        String lookup = "Not find";
+    public int dictionaryLookup (String s) {
+        //String lookup = "Not find";
         /*int l = 0, r = dic.words.size() - 1;
         while (l <= r) {
             int mid = l + (r - l)/2;
@@ -49,31 +49,46 @@ public class DictionaryManagement {
                 }
             }*/
 
-        for (int i = 0; i < dic.words.size(); i++) {
-            int x = dic.words.get(i).getWord_target().indexOf(' ');
-            //System.out.println(x);
-            String temp = dic.words.get(i).getWord_target().substring(0, x);
-            //System.out.println(temp);
+        //ko dung voi truong hop vi du nhu "a bit" hay "a few"...
+        for (int i = 0; i <words.size(); i++) {
+            int x = words.get(i).getWord_target().indexOf(' ');
+            String temp = words.get(i).getWord_target().substring(0, x);
             if (temp.equals(s)) {
-                lookup = dic.words.get(i).getWord_target() + " | " + dic.words.get(i).getWord_explain();
+                //lookup = words.get(i).getWord_target() + " | " + words.get(i).getWord_explain();
                 //break;
+                return i;
             }
         }
-        System.out.println(lookup);
+        return 0;
+        //System.out.println(lookup);
     }
 
-    /*public ArrayList<Word> dictionarySearcher(String s) {
-        ArrayList <Word> lookup = new ArrayList<>();
-        int s_length = s.length();
-        for (int i = 0; i < dic.words.size(); i++) {
-            if (s_length > dic.words.get(i).getWord_target().length()) continue;
-            String temp = dic.words.get(i).getWord_target().substring(0, s_length);
-            if (temp.equals(s)) {
-                Word w = new Word(dic.words.get(i).getWord_target(), dic.words.get(i).getWord_explain());
-                lookup.add(w);
-            }
+    public void editDictionary(String s) {
+        if (s.contains("add: ")) {
+            int x = s.lastIndexOf("\t");
+            en = s.substring(5, x);
+            vi = s.substring(x + 1);
+            Word w = new Word(en, vi);
+            words.add(w);
         }
-        return lookup;
-    }*/
+        else if (s.contains("delete: ")) {
+            String temp = s.substring(8);
+            int x = dictionaryLookup(temp);
+            if (x != 0) words.remove(x);
+            else System.out.println("the word is not in dictionary");
+        }
+        if (s.contains("export to txt")) dictionaryExportToFile();
+    }
 
+    public void dictionaryExportToFile() {
+        try {
+            FileWriter fw = new FileWriter("D:\\OOP\\Dictionary\\newDic.txt");
+            for (int i = 0; i < words.size(); i++) {
+                fw.write(words.get(i).getWord_target() + "\t" + words.get(i).getWord_explain() + "\n");
+            }
+            fw.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }
