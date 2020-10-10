@@ -1,5 +1,3 @@
-package Controllers;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -98,7 +96,7 @@ public class DictionaryController implements Initializable {
             column1.setText("REMOVED WORD");
 
             status.setBackground(new Background(new BackgroundFill(Color.rgb(255, 228, 225), CornerRadii.EMPTY, Insets.EMPTY)));
-            ;
+
 
         }
     }
