@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DictionaryController">
+   <children>
+      <VBox layoutX="-4.0" prefHeight="420.0" prefWidth="244.0" style="-fx-background-color: #FFB6C1#FFB6C1;">
+         <children>
+            <Pane prefHeight="199.0" prefWidth="222.0">
+               <children>
+                  <Text fill="#0b0586" layoutX="62.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary" wrappingWidth="136.53125">
+                     <font>
+                        <Font name="Brush Script MT Italic" size="39.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="book" fitHeight="190.0" fitWidth="183.0" layoutX="31.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../dictionaryImages/Book.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#0e7238" layoutX="54.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by Khue &amp; Huyen">
+                     <font>
+                        <Font name="Brush Script MT Italic" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Button fx:id="engVietSearch" mnemonicParsing="false" onAction="#handleClicks" onMouseClicked="#mouseClicked" prefHeight="75.0" prefWidth="244.0" text="Search English Word" textFill="#377db2">
+               <font>
+                  <Font name="Times New Roman Italic" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="search11" fitHeight="31.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../dictionaryImages/Search.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="addEngWord" mnemonicParsing="false" onAction="#handleClicks" onMouseClicked="#mouseClicked" prefHeight="71.0" prefWidth="244.0" text="Add new English Word" textFill="#377db2">
+               <font>
+                  <Font name="Times New Roman Italic" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="add1" fitHeight="37.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../dictionaryImages/Plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="removeWord" mnemonicParsing="false" onAction="#handleClicks" prefHeight="73.0" prefWidth="244.0" text="Remove Word" textFill="#377db2">
+               <font>
+                  <Font name="Times New Roman Italic" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="remove1" fitHeight="44.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../dictionaryImages/Minus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <VBox layoutX="239.0" layoutY="97.0" prefHeight="321.0" prefWidth="506.0">
+         <children>
+            <GridPane prefHeight="327.0" prefWidth="506.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="506.0" minWidth="10.0" prefWidth="506.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="253.0" minWidth="0.0" prefWidth="0.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="201.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="293.0" minHeight="10.0" prefHeight="277.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox prefHeight="44.0" prefWidth="493.0">
+                     <children>
+                        <TextField fx:id="type" prefHeight="34.0" prefWidth="287.0">
+                           <HBox.margin>
+                              <Insets left="35.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button fx:id="search" mnemonicParsing="false" onAction="#handleButton" onMouseClicked="#mouseClicked" prefHeight="33.0" prefWidth="66.0" text="Search" />
+                        <Button fx:id="clear" mnemonicParsing="false" onAction="#handleClicks" onMouseClicked="#mouseClicked" prefHeight="33.0" prefWidth="59.0" text="Clear">
+                           <HBox.margin>
+                              <Insets left="36.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <children>
+                        <VBox layoutX="317.0" prefHeight="277.0" prefWidth="183.0" />
+                        <TitledPane fx:id="column" animated="false" collapsible="false" prefHeight="277.0" prefWidth="155.0" text="WORD LIST" textFill="#0d2990">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="228.0" prefWidth="181.0">
+                                 <children>
+                                    <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="-2.0" layoutY="-5.0" prefHeight="245.0" prefWidth="189.0">
+                                       <content>
+                                          <ListView fx:id="wordList" onMouseClicked="#mouseClicked" prefHeight="243.0" prefWidth="139.0" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                           <font>
+                              <Font name="Times New Roman Bold Italic" size="20.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane fx:id="column1" animated="false" collapsible="false" layoutX="155.0" prefHeight="277.0" prefWidth="342.0" text="ENG - VIET (MEANING)" textFill="#0d2990">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="239.0" prefWidth="305.0">
+                                 <children>
+                                    <Label fx:id="label2" layoutX="-1.0" layoutY="-2.0" onMouseClicked="#mouseClicked" prefHeight="241.0" prefWidth="335.0">
+                                       <font>
+                                          <Font name="Times New Roman" size="23.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                           <font>
+                              <Font name="Times New Roman Bold Italic" size="20.0" />
+                           </font>
+                        </TitledPane>
+                     </children>
+                  </Pane>
+               </children>
+               <VBox.margin>
+                  <Insets right="10.0" />
+               </VBox.margin>
+            </GridPane>
+         </children>
+      </VBox>
+      <Pane layoutX="239.0" layoutY="2.0" prefHeight="93.0" prefWidth="506.0" AnchorPane.leftAnchor="239.0">
+         <children>
+            <AnchorPane fx:id="status" prefHeight="85.0" prefWidth="495.0" style="-fx-background-color: #FFE4E1#FFE4E1;">
+               <children>
+                  <Text fx:id="bigStatus" fill="#0b5b90" fontSmoothingType="LCD" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENGLISH  -  VIETNAMESE" textAlignment="CENTER" wrappingWidth="474.22900390625">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="smallStatus" fill="#0b5b90" layoutX="83.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/Dictionary/Eng-Viet/" wrappingWidth="232.71240234375">
+                     <font>
+                        <Font name="Times New Roman Italic" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
