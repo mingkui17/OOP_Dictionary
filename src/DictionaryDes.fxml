@@ -29,7 +29,7 @@
                   </Text>
                </children>
             </Pane>
-            <Button fx:id="engVietSearch" mnemonicParsing="false" onAction="#handleClicks" onMouseClicked="#mouseClicked" prefHeight="75.0" prefWidth="244.0" text="Search English Word" textFill="#377db2">
+            <Button fx:id="engVietSearch" mnemonicParsing="false" onAction="#handleClicks" prefHeight="57.0" prefWidth="253.0" text="Search English Word" textFill="#377db2">
                <font>
                   <Font name="Times New Roman Italic" size="18.0" />
                </font>
@@ -41,7 +41,6 @@
                   </ImageView>
                </graphic>
             </Button>
-<<<<<<< HEAD
             <Button fx:id="vietEngSearch" mnemonicParsing="false" onAction="#handleClicks" prefHeight="56.0" prefWidth="251.0" text="Search VIET Word" textFill="#377db2">
                <font>
                   <Font name="Times New Roman Italic" size="18.0" />
@@ -55,9 +54,6 @@
                </graphic>
             </Button>
             <Button fx:id="addEngWord" mnemonicParsing="false" onAction="#handleClicks" prefHeight="55.0" prefWidth="244.0" text="Add new English Word" textFill="#377db2">
-=======
-            <Button fx:id="addEngWord" mnemonicParsing="false" onAction="#handleClicks" onMouseClicked="#mouseClicked" prefHeight="71.0" prefWidth="244.0" text="Add new English Word" textFill="#377db2">
->>>>>>> f7f291396e2c679739b3f7dc4164635663e25fdf
                <font>
                   <Font name="Times New Roman Italic" size="18.0" />
                </font>
@@ -69,7 +65,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="removeWord" mnemonicParsing="false" onAction="#handleClicks" prefHeight="73.0" prefWidth="244.0" text="Remove Word" textFill="#377db2">
+            <Button fx:id="removeWord" mnemonicParsing="false" onAction="#handleClicks" prefHeight="49.0" prefWidth="254.0" text="Remove Word" textFill="#377db2">
                <font>
                   <Font name="Times New Roman Italic" size="18.0" />
                </font>
@@ -95,62 +91,59 @@
                 <RowConstraints maxHeight="293.0" minHeight="10.0" prefHeight="277.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <HBox prefHeight="44.0" prefWidth="493.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="type" prefHeight="34.0" prefWidth="287.0">
+                        <TextField fx:id="type" prefHeight="34.0" prefWidth="337.0">
                            <HBox.margin>
-                              <Insets left="35.0" />
+                              <Insets left="40.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="search" mnemonicParsing="false" onAction="#handleButton" onMouseClicked="#mouseClicked" prefHeight="33.0" prefWidth="66.0" text="Search" />
-                        <Button fx:id="clear" mnemonicParsing="false" onAction="#handleClicks" onMouseClicked="#mouseClicked" prefHeight="33.0" prefWidth="59.0" text="Clear">
-                           <HBox.margin>
-                              <Insets left="36.0" />
-                           </HBox.margin>
-                        </Button>
+                        <Button fx:id="search" mnemonicParsing="false" onAction="#handleButton" prefHeight="33.0" prefWidth="83.0" text="Search" />
                      </children>
                   </HBox>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <VBox layoutX="317.0" prefHeight="277.0" prefWidth="183.0" />
-                        <TitledPane animated="false" collapsible="false" prefHeight="277.0" prefWidth="183.0" text="WORD LIST" textFill="#0d2990">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="228.0" prefWidth="181.0">
-                                 <children>
-                                    <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="-2.0" layoutY="-5.0" prefHeight="245.0" prefWidth="189.0">
-                                       <content>
-                                          <ListView fx:id="wordList" onMouseClicked="#mouseClicked" prefHeight="243.0" prefWidth="139.0" />
-                                       </content>
-                                    </ScrollPane>
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                           <font>
-                              <Font name="Times New Roman Bold Italic" size="20.0" />
-                           </font>
-                        </TitledPane>
-                        <TitledPane fx:id="column1" animated="false" collapsible="false" layoutX="183.0" prefHeight="277.0" prefWidth="314.0" text="ENG - VIET (MEANING)" textFill="#0d2990">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <Label fx:id="label2" layoutX="-2.0" layoutY="1.0" onMouseClicked="#mouseClicked" prefHeight="240.0" prefWidth="314.0">
-                                       <font>
-                                          <Font name="Times New Roman" size="23.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                           <font>
-                              <Font name="Times New Roman Bold Italic" size="20.0" />
-                           </font>
-                        </TitledPane>
+                        <VBox prefHeight="277.0" prefWidth="318.0">
+                           <children>
+                              <TitledPane fx:id="column1" animated="false" collapsible="false" prefHeight="275.0" prefWidth="304.0" style="-fx-background-color: #ADD8E6;" text="ENG - VIET (MEANING)" textAlignment="CENTER" textFill="#032094">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label fx:id="label1" layoutX="2.0" prefHeight="233.0" prefWidth="318.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                                 <font>
+                                    <Font name="Times New Roman Bold Italic" size="20.0" />
+                                 </font>
+                              </TitledPane>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="317.0" prefHeight="277.0" prefWidth="183.0">
+                           <children>
+                              <TitledPane animated="false" collapsible="false" prefHeight="319.0" prefWidth="215.0" text="PRONOUNCE" textAlignment="CENTER" textFill="#0b129a">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label fx:id="label2" layoutX="-2.0" prefHeight="239.0" prefWidth="183.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets top="12.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                </content>
+                                 <font>
+                                    <Font name="Times New Roman Bold Italic" size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets right="3.0" />
+                                 </VBox.margin>
+                              </TitledPane>
+                           </children>
+                        </VBox>
                      </children>
                   </Pane>
                </children>
-               <VBox.margin>
-                  <Insets right="10.0" />
-               </VBox.margin>
             </GridPane>
          </children>
       </VBox>

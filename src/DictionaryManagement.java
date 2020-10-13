@@ -44,36 +44,44 @@ public class DictionaryManagement {
         String lookup = "Not find";
         for (Word w : words) {
             if (w.getWord_target().equalsIgnoreCase(s)) {
-                lookup = w.getWord_explain();
+                String temp = w.getWord_explain();
+                int x = temp.indexOf("(");
+                int y = temp.lastIndexOf("/");
+                if (y > 0) lookup = temp.substring(0, y + 1) + "\n" + temp.substring(y + 2);
+                else if (x == 0 && y < 0) {
+                        int z = temp.lastIndexOf(")");
+                        lookup = temp.substring(0, z + 1) + "\n" + temp.substring(z + 2);
+                    } else lookup = temp;
                 break;
             }
         }
         return lookup;
     }
 
-    public void editDictionary(String s) {
-        if (s.contains("add: ")) {
+    public void addWord(String s) {
+        if (dictionaryLookup(s).equals("Not find"))
+            System.out.println("the word is in dictionary");
+        else {
             int x = s.lastIndexOf("@");
             if (x != -1) {
-                en = s.substring(5, x - 1);
+                en = s.substring(0, x - 1);
                 vi = s.substring(x + 2);
                 Word w = new Word(en, vi);
                 words.add(w);
             }
         }
-        if (s.contains("delete: ")) {
-            boolean check = true;
-            String temp = s.substring(8);
-            for (Word w : words) {
-                if (w.getWord_target().equalsIgnoreCase(temp)) {
-                    words.remove(w);
-                    check = false;
-                    break;
-                }
+    }
+
+    public void deleteWord(String s) {
+        boolean check = true;
+        for (Word w : words) {
+            if (w.getWord_target().equalsIgnoreCase(s)) {
+                words.remove(w);
+                check = false;
+                break;
             }
-            if (check) System.out.println("the word is not in dictionary");
         }
-        if (s.contains("export to txt")) dictionaryExportToFile();
+        if (check) System.out.println("the word is not in dictionary");
     }
 
     public void dictionaryExportToFile() {

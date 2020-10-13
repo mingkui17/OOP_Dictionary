@@ -27,20 +27,14 @@ public class DictionaryCommandline {
     }
 
     public void dictionaryAdvanced(String s, DictionaryManagement dicMa) {
-        dicMa.editDictionary(s);
-
-        ArrayList<String> search = dictionarySearcher(s, dicMa.words);
-        printSearch(search);
+        //ArrayList<String> search = dictionarySearcher(s, dicMa.words);
+        //printSearch(search);
 
         String lookup = dicMa.dictionaryLookup(s);
         System.out.println(lookup);
     }
 
     public static void main(String[] args) {
-        System.out.println("Muon them du lieu vao tu dien, nhap theo cu phap: add: english @ vienamese");
-        System.out.println("Muon xoa du lieu trong tu dien, nhap theo cu phap: delete: english");
-        System.out.println("Muon xuat du lieu tu dien ra file txt, nhap theo cu phap: export to txt");
-
         Scanner sc = new Scanner(System.in);
         DictionaryCommandline dicC = new DictionaryCommandline();
         DictionaryManagement dicMa = new DictionaryManagement();
