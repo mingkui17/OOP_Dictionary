@@ -58,9 +58,9 @@ public class DictionaryManagement {
         return lookup;
     }
 
-    public void addWord(String s) {
+    public String addWord(String s) {
         if (dictionaryLookup(s).equals("Not find"))
-            System.out.println("the word is in dictionary");
+            return "the word is in dictionary";
         else {
             int x = s.lastIndexOf("@");
             if (x != -1) {
@@ -69,10 +69,11 @@ public class DictionaryManagement {
                 Word w = new Word(en, vi);
                 words.add(w);
             }
+            return "";
         }
     }
 
-    public void deleteWord(String s) {
+    public String deleteWord(String s) {
         boolean check = true;
         for (Word w : words) {
             if (w.getWord_target().equalsIgnoreCase(s)) {
@@ -81,18 +82,20 @@ public class DictionaryManagement {
                 break;
             }
         }
-        if (check) System.out.println("the word is not in dictionary");
+        if (check) return "the word is not in dictionary";
+        else return "";
     }
 
-    public void dictionaryExportToFile() {
+    public String dictionaryExportToFile() {
         try {
             FileWriter fw = new FileWriter("D:\\OOP\\Dictionary\\newDic.txt");
             for (Word word : words) {
                 fw.write(word.getWord_target() + " " + word.getWord_explain() + "\n");
             }
             fw.close();
+            return "";
         } catch (Exception e) {
-            System.out.println("Error in export to file");
+            return "Error in export to file";
         }
     }
 }

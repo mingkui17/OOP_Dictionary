@@ -19,7 +19,7 @@
                   </Text>
                   <ImageView fx:id="book" fitHeight="190.0" fitWidth="183.0" layoutX="31.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../dictionaryImages/Book.png" />
+                        <Image url="@./dictionaryImages/Book.png" />
                      </image>
                   </ImageView>
                   <Text fill="#0e7238" layoutX="54.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by Khue &amp; Huyen">
