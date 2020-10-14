@@ -88,6 +88,13 @@ public class DictionaryController implements Initializable {
     }
 
     @FXML
+    public void chooseWordFromList(MouseEvent event) {
+        String w = wordList.getSelectionModel().getSelectedItem();
+        type.setText(w);
+        showMeaning(w);
+    }
+
+    @FXML
     public void mouseClicked(MouseEvent event) {
         String s = type.getText();
         if (event.getSource() == search) {
@@ -96,6 +103,8 @@ public class DictionaryController implements Initializable {
             showMeaning(s);
             showList(s);
         }
+
+        //if (event.getClickCount() == 1) System.out.println("333");
 
         if (event.getSource() == clear) {
             clearLabel();

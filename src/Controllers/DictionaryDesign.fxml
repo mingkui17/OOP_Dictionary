@@ -148,7 +148,7 @@
                                  <children>
                                     <ScrollPane fx:id="ins" fitToHeight="true" fitToWidth="true" layoutX="-2.0" layoutY="-5.0" prefHeight="245.0" prefWidth="189.0">
                                        <content>
-                                          <ListView fx:id="wordList" onMouseClicked="#mouseClicked" prefHeight="243.0" prefWidth="139.0" />
+                                          <ListView fx:id="wordList" onMouseClicked="#chooseWordFromList" prefHeight="243.0" prefWidth="139.0" />
                                        </content>
                                     </ScrollPane>
                                  </children>
