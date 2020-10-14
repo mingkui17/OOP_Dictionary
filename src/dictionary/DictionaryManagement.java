@@ -1,8 +1,12 @@
 package dictionary;
 
+import javax.speech.Central;
+import javax.speech.synthesis.Synthesizer;
+import javax.speech.synthesis.SynthesizerModeDesc;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class DictionaryManagement {
@@ -20,7 +24,7 @@ public class DictionaryManagement {
 
     public void insertFromFile() {
         try {
-            Scanner scf = new Scanner(new File("src\\dictionaryFiles\\dictionaries.txt"));
+            Scanner scf = new Scanner(new File("src/dictionaryFiles/dictionaries.txt"));
             while (scf.hasNextLine()){
                 Word w = new Word();
                 String s = scf.nextLine();
@@ -62,8 +66,8 @@ public class DictionaryManagement {
 
     public String addWord(String s1, String s2) {
         if (dictionaryLookup(s1).equals("Not find")) {
-                Word w = new Word(s1, s2);
-                words.add(w);
+            Word w = new Word(s1, s2);
+            words.add(w);
         } else return "The word has already been" + "\n" + "in dictionary!";
         return "The word has been added!";
     }
@@ -77,13 +81,39 @@ public class DictionaryManagement {
                 break;
             }
         }
-        if (check) return s + " is not" + "\n" + "in dictionary!";
-        else return s + "\n" + " has been removed!";
+        if (check) return s + " is not" + "\n" + "in dictionary";
+        else return s + "\n" + " has been removed";
+    }
+
+    public void TextToSpeech(String s) {
+        if (!dictionaryLookup(s).equals("Not find"))
+            try {
+                // Set property as Kevin Dictionary
+                System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us" + ".cmu_us_kal.KevinVoiceDirectory");
+
+                // Register Engine
+                Central.registerEngineCentral("com.sun.speech.freetts" + ".jsapi.FreeTTSEngineCentral");
+
+                // Create a Synthesizer
+                Synthesizer synthesizer = Central.createSynthesizer(new SynthesizerModeDesc(Locale.US));
+
+                // Get it ready to speak
+                synthesizer.allocate();
+                synthesizer.resume();
+
+                synthesizer.speakPlainText(s, null); // speak chuoi s
+                synthesizer.waitEngineState(Synthesizer.QUEUE_EMPTY); // Wait till speaking is done
+
+                //synthesizer.deallocate(); // Clean up
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
     }
 
     public String dictionaryExportToFile() {
         try {
-            FileWriter fw = new FileWriter("src\\dictionaryFiles\\newDic.txt");
+            FileWriter fw = new FileWriter("src/dictionaryFiles/newDic.txt");
             for (Word word : words) {
                 fw.write(word.getWord_target() + " " + word.getWord_explain() + "\n");
             }

@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DictionaryController">
    <children>
@@ -108,7 +121,7 @@
                               <Font name="Times New Roman" size="18.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="search" mnemonicParsing="false" onAction="#handleClicks" onMouseClicked="#mouseClicked" prefHeight="33.0" prefWidth="105.0" text="Search">
+                        <Button fx:id="search" mnemonicParsing="false" onMouseClicked="#mouseClicked" prefHeight="33.0" prefWidth="105.0" text="Search">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -119,7 +132,7 @@
                            <HBox.margin>
                               <Insets right="-15.0" />
                            </HBox.margin></Button>
-                        <Button fx:id="clear" mnemonicParsing="false" onAction="#handleClicks" onMouseClicked="#mouseClicked" prefHeight="33.0" prefWidth="79.0" text="Clear">
+                        <Button fx:id="clear" mnemonicParsing="false" onMouseClicked="#mouseClicked" prefHeight="33.0" prefWidth="79.0" text="Clear">
                            <HBox.margin>
                               <Insets left="36.0" right="15.0" />
                            </HBox.margin>
@@ -149,12 +162,12 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <Label fx:id="label2" layoutX="2.0" layoutY="86.0" onMouseClicked="#mouseClicked" prefHeight="85.0" prefWidth="358.0">
+                                    <Label fx:id="label2" layoutX="9.0" layoutY="63.0" onMouseClicked="#mouseClicked" prefHeight="113.0" prefWidth="337.0">
                                        <font>
                                           <Font name="Times New Roman" size="23.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="speaker" layoutX="2.0" layoutY="34.0" mnemonicParsing="false" onAction="#playSound" onMouseClicked="#mouseClicked" prefHeight="44.0" prefWidth="56.0">
+                                    <Button fx:id="speaker" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#mouseClicked" prefHeight="44.0" prefWidth="56.0">
                                        <graphic>
                                           <ImageView fitHeight="35.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                              <image>

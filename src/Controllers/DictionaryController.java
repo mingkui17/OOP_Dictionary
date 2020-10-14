@@ -4,7 +4,6 @@ import dictionary.DictionaryCommandline;
 import dictionary.DictionaryManagement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -52,6 +51,9 @@ public class DictionaryController implements Initializable {
     @FXML
     private Button remove;
 
+    @FXML
+    private Button speaker;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -59,11 +61,6 @@ public class DictionaryController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    private void handleClicks(ActionEvent event) throws Exception {
-
     }
 
     public void clearLabel() {
@@ -79,7 +76,6 @@ public class DictionaryController implements Initializable {
 
     @FXML
     public void showList(String s) {
-        System.out.println("1");
         for(String i : dicC.dictionarySearcher(s, dicMa.words)) {
             list.add(i);
         }
@@ -115,5 +111,13 @@ public class DictionaryController implements Initializable {
         if(event.getSource() == remove) {
             label1.setText(dicMa.deleteWord(s2));
         }
+
+        if(event.getSource() == speaker) {
+            dicMa.TextToSpeech(s);
+        }
     }
 }
+
+
+
+
