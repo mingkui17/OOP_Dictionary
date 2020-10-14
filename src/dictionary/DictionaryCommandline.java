@@ -1,8 +1,11 @@
+package dictionary;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DictionaryCommandline {
-    public ArrayList<String> dictionarySearcher(String s, ArrayList<Word> words ) {
+
+    public ArrayList<String> dictionarySearcher(String s, ArrayList<Word> words) {
         ArrayList <String> search = new ArrayList<>();
         int s_length = s.length();
         for (Word w : words) {
@@ -27,14 +30,16 @@ public class DictionaryCommandline {
     }
 
     public void dictionaryAdvanced(String s, DictionaryManagement dicMa) {
-        //ArrayList<String> search = dictionarySearcher(s, dicMa.words);
-        //printSearch(search);
 
         String lookup = dicMa.dictionaryLookup(s);
         System.out.println(lookup);
     }
-
+/*
     public static void main(String[] args) {
+        System.out.println("Muon them du lieu vao tu dien, nhap theo cu phap: add: english\tvienamese");
+        System.out.println("Muon xoa du lieu trong tu dien, nhap theo cu phap: delete: english");
+        System.out.println("Muon xuat du lieu tu dien ra file txt, nhap theo cu phap: export to txt");
+
         Scanner sc = new Scanner(System.in);
         DictionaryCommandline dicC = new DictionaryCommandline();
         DictionaryManagement dicMa = new DictionaryManagement();
@@ -47,5 +52,6 @@ public class DictionaryCommandline {
 
         sc.close();
     }
-}
 
+ */
+}

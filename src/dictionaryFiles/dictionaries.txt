@@ -76,7 +76,7 @@ afterwards (adv) /’ɑ:ftəwəd/ sau này, về sau, rồi thì, sau đấy
 again (adv) /ə’gen/ lại, nữa, lần nữa
 against (prep) /ə’geinst/ chống lại, phản đối
 age (n) /eidʤ/ tuổi
-aged (adj) /’eidʤid/ già đi 
+aged (adj) /’eidʤid/ già đi
 agency (n) /’eidʤənsi/ tác dụng, lực; môi giới, trung gian
 agent (n) /’eidʤənt/ đại lý, tác nhân
 aggressive (adj) /ə’gresiv/ xâm lược, hung hăng, xông xáo
@@ -121,7 +121,7 @@ amazed (adj) /ə’meiz/ kinh ngạc, sửng sốt
 ambition (n) /æm’biʃn/ hoài bão, khát vọng
 ambulance (n) /’æmbjuləns/ xe cứu thương, xe cấp cứu
 among (prep) /ə’mʌɳ/ giữa, ở giữa
-amount (n), (v) /ə’maunt/ số lượng, số nhiều; lên tới 
+amount (n), (v) /ə’maunt/ số lượng, số nhiều; lên tới
 amuse (v) /ə’mju:z/ làm cho vui, thích, làm buồn cười
 amusing (adj) /ə’mju:ziɳ/ vui thích
 amused (adj) /ə’mju:zd/ vui thích
@@ -197,7 +197,7 @@ artificial (adj) /,ɑ:ti’fiʃəl/ nhân tạo
 artificially (adv) /,ɑ:ti’fiʃəli/ nhân tạo
 artist (n) /’ɑ:tist/ nghệ sĩ
 artistic (adj) /ɑ:’tistik/ thuộc nghệ thuật, thuộc mỹ thuật
-as (prep), (adv), (conj) /æz, əz/ như 
+as (prep), (adv), (conj) /æz, əz/ như
 ashamed (adj) /ə’ʃeimd/ ngượng, xấu hổ
 aside (adv) /ə’said/ về một bên, sang một bên
 apart from (prep) /ə’pɑ:t/ ngoài… ra
@@ -235,7 +235,7 @@ author (n) /’ɔ:θə/ tác giả
 authority (n) /ɔ:’θɔriti/ uy quyền, quyền lực
 automatic (adj) /,ɔ:tə’mætik/ tự động
 automatically (adv) một cách tự động
-autumn (n) /’ɔ:təm/ mùa thu 
+autumn (n) /’ɔ:təm/ mùa thu
 available (adj) /ə’veiləbl/ có thể dùng được, có giá trị, hiệu lực
 average (adj), (n) /’ævəridʤ/ trung bình, số trung bình, mức trung bình
 avoid (v) /ə’vɔid/ tránh, tránh xa
@@ -421,7 +421,7 @@ buy (v) /bai/ mua
 buyer (n) /´baiə/ người mua
 by (prep), (adv) /bai/ bởi, bằng
 bye exclamation /bai/ tạm biệt
-cent /sent/ đồng xu 
+cent /sent/ đồng xu
 cabinet (n) /’kæbinit/ tủ có nhiều ngăn đựng đồ
 cable (n) /’keibl/ dây cáp
 cake (n) /keik/ bánh ngọt
@@ -477,7 +477,7 @@ celebrate (v) /’selibreit/ kỷ niệm, làm lễ kỷ niệm; tán dương, c
 celebration (n) /,seli’breiʃn/ sự kỷ niệm, lễ kỷ niệm; sự tán dương, sự ca tụng
 cell (n) /sel/ ô, ngăn
 cellphone (n) điện thoại di động
-cent (n) (abbr. c, ct) /sent/ đồng xu 
+cent (n) (abbr. c, ct) /sent/ đồng xu
 centimetre (n) xen ti met
 central (adj) /´sentrəl/ trung tâm, ở giữa, trung ương
 centre (n) /’sentə/ điểm giữa, trung tâm, trung ương
@@ -1395,7 +1395,7 @@ grant (v), (n) /grα:nt/ cho, ban, cấp; sự cho, sự ban, sự cấp
 grass (n) /grɑ:s/ cỏ; bãi cỏ, đồng cỏ
 grateful (adj) /´greitful/ biết ơn, dễ chịu, khoan khoái
 grave (n), (adj) /greiv/ mộ, dấu huyền; trang nghiêm, nghiêm trọng
-gray /grei/ xám, hoa râm 
+gray /grei/ xám, hoa râm
 grey /grei/ xám, hoa râm
 great (adj) /greɪt/ to, lớn, vĩ đại
 greatly (adv) /´greitli/ rất, lắm; cao thượng, cao cả
@@ -2248,7 +2248,7 @@ pill (n) /´pil/ viên thuốc
 pilot (n) /´paiələt/ phi công
 pin (n), (v) /pin/ đinh ghim; ghim., kẹp
 pink (adj), (n) /piηk/ màu hồng; hoa cẩm chướng, tình trạng tốt, hoàn hảo
-pint (n) /paint/ Panh (đơn vị đo lường) 
+pint (n) /paint/ Panh (đơn vị đo lường)
 pipe (n) /paip/ ống dẫn (khí, nước…)
 pitch (n) /pit∫/ sân (chơi các môn thể thao); đầu hắc ín
 pity (n) /´piti/ lòng thương hại, điều đáng tiếc, đáng thương
@@ -2729,7 +2729,7 @@ set (n), (v) /set/ bộ, bọn, đám, lũ; đặt để, bố trí
 settle (v) /ˈsɛtl/ giải quyết, dàn xếp, hòa giải, đặt, bố trí
 several (det), (pron) /’sevrəl/ vài
 severe (adj) /səˈvɪər/ khắt khe, gay gắt; giản dị, mộc mạc (kiểu cách, trang phục, dung nhan)
-severely (adv) /sə´virli/ khắt khe, gay gắt (thái độ, cư xử); giản dị, mộc mạc 
+severely (adv) /sə´virli/ khắt khe, gay gắt (thái độ, cư xử); giản dị, mộc mạc
 sew (v) /soʊ/ may, khâu
 sewing (n) /´souiη/ sự khâu, sự may vá
 sex (n) /seks/ giới, giống
@@ -2799,7 +2799,7 @@ simply (adv) /´simpli/ một cách dễ dàng, giản dị
 since (prep), (conj), (adv) /sins/ từ, từ khi; từ khi, từ lúc đó; từ đó, từ lúc ấy
 sincere (adj) /sin´siə/ thật thà, thẳng thắng, chân thành
 sincerely (adv) /sin’siəli/ một cách chân thành
-Yours sincerely @ bạn chân thành của anh, chị.. 
+Yours sincerely @ bạn chân thành của anh, chị..
 sing (v) /siɳ/ hát, ca hát
 singing (n) /´siηiη/ sự hát, tiếng hát
 singer (n) /´siηə/ ca sĩ
@@ -3244,7 +3244,7 @@ ugly (adj) /’ʌgli/ xấu xí, xấu xa
 ultimate (adj) /ˈʌltəmɪt/ cuối cùng, sau cùng
 ultimately (adv) /´ʌltimətli/ cuối cùng, sau cùng
 umbrella (n) /ʌm’brelə/ ô, dù
-unable able /ʌn´eibl/ không thể, không có khẳ năng 
+unable able /ʌn´eibl/ không thể, không có khẳ năng
 unacceptable /¸ʌnək´septəbl/ không thể chấp nhận
 uncertain /ʌn’sə:tn/ không chắc chắn, khôn biết rõ ràng
 uncle (n) /ʌηkl/ chú, bác

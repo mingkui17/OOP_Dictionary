@@ -1,3 +1,5 @@
+package dictionary;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -18,15 +20,15 @@ public class DictionaryManagement {
 
     public void insertFromFile() {
         try {
-            Scanner scf = new Scanner(new File("dictionaries.txt"));
-            while (scf.hasNextLine()) {
+            Scanner scf = new Scanner(new File("src\\dictionaryFiles\\dictionaries.txt"));
+            while (scf.hasNextLine()){
                 Word w = new Word();
                 String s = scf.nextLine();
                 int x;
                 if (s.contains("@")) x = s.indexOf("@");
                 else if (s.contains("(")) x = s.indexOf("(");
-                    else if (s.contains("/")) x = s.indexOf("/");
-                        else x = s.length() / 2;
+                else if (s.contains("/")) x = s.indexOf("/");
+                else x = s.length() / 2;
                 en = s.substring(0, x-1);
                 w.setWord_target(en);
                 if (s.contains("@")) vi = s.substring(x + 2);
@@ -49,31 +51,21 @@ public class DictionaryManagement {
                 int y = temp.lastIndexOf("/");
                 if (y > 0) lookup = temp.substring(0, y + 1) + "\n" + temp.substring(y + 2);
                 else if (x == 0 && y < 0) {
-                        int z = temp.lastIndexOf(")");
-                        lookup = temp.substring(0, z + 1) + "\n" + temp.substring(z + 2);
-                    } else lookup = temp;
+                    int z = temp.lastIndexOf(")");
+                    lookup = temp.substring(0, z + 1) + "\n" + temp.substring(z + 2);
+                } else lookup = temp;
                 break;
             }
         }
         return lookup;
     }
 
-    public String addWord(String s) {
-        if(!s.contains("@")) {
-            return "Please enter:" + "\n" + "\"word\" @ \"its meaning\"!";
-        }
-        if (dictionaryLookup(s).equals("Not find")) {
-            int x = s.lastIndexOf("@");
-            if (x != -1) {
-                en = s.substring(0, x - 1);
-                vi = s.substring(x + 2);
-                Word w = new Word(en, vi);
+    public String addWord(String s1, String s2) {
+        if (dictionaryLookup(s1).equals("Not find")) {
+                Word w = new Word(s1, s2);
                 words.add(w);
-            }
-        } else {
-            return s + " has already been" + "\n" + "in dictionary";
-        }
-        return s + "\n" + " has been added";
+        } else return "The word has already been" + "\n" + "in dictionary!";
+        return "The word has been added!";
     }
 
     public String deleteWord(String s) {
@@ -85,13 +77,13 @@ public class DictionaryManagement {
                 break;
             }
         }
-        if (check) return s + " is not" + "\n" + "in dictionary";
-        else return s + "\n" + " has been removed";
+        if (check) return s + " is not" + "\n" + "in dictionary!";
+        else return s + "\n" + " has been removed!";
     }
 
     public String dictionaryExportToFile() {
         try {
-            FileWriter fw = new FileWriter("D:\\OOP\\Dictionary\\newDic.txt");
+            FileWriter fw = new FileWriter("D:src\\dictionaryFiles\\newDic.txt");
             for (Word word : words) {
                 fw.write(word.getWord_target() + " " + word.getWord_explain() + "\n");
             }

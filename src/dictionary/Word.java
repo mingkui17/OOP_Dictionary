@@ -1,3 +1,5 @@
+package dictionary;
+
 public class Word {
     private String word_target;
     private String word_explain;
@@ -16,11 +18,11 @@ public class Word {
         word_explain = s;
     }
 
-    Word() {
+    public Word() {
         word_target = "hello";
         word_explain = "xin chao";
     }
-    Word(String en, String vi) {
+    public Word(String en, String vi) {
         word_target = en;
         word_explain = vi;
     }

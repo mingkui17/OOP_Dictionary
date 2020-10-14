@@ -2,7 +2,6 @@ package Controllers;
 
 import dictionary.DictionaryCommandline;
 import dictionary.DictionaryManagement;
-import dictionary.Word;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,14 +11,11 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class DictionaryController implements Initializable {
 
-    Scanner sc = new Scanner(System.in);
     DictionaryCommandline dicC = new DictionaryCommandline();
     DictionaryManagement dicMa = new DictionaryManagement();
-    Word w = new Word();
 
     ObservableList<String> list = FXCollections.observableArrayList();
 
@@ -28,6 +24,9 @@ public class DictionaryController implements Initializable {
 
     @FXML
     private TextField typeAdd;
+
+    @FXML
+    private TextField typeAdd2;
 
     @FXML
     private TextField typeRemove;
@@ -74,6 +73,7 @@ public class DictionaryController implements Initializable {
         type.setText("");
         label1.setText("");
         typeAdd.setText("");
+        typeAdd2.setText("");
         typeRemove.setText("");
     }
 
@@ -95,6 +95,8 @@ public class DictionaryController implements Initializable {
     public void mouseClicked(MouseEvent event) {
         String s = type.getText();
         if (event.getSource() == search) {
+            clearLabel();
+            type.setText(s);
             showMeaning(s);
             showList(s);
         }
@@ -104,8 +106,9 @@ public class DictionaryController implements Initializable {
         }
 
         String s1 = typeAdd.getText();
+        String s11 = typeAdd2.getText();
         if(event.getSource() == add) {
-            label1.setText(dicMa.addWord(s1));
+            label1.setText(dicMa.addWord(s1, s11));
         }
 
         String s2 = typeRemove.getText();
@@ -113,10 +116,6 @@ public class DictionaryController implements Initializable {
             label1.setText(dicMa.deleteWord(s2));
         }
 
+
     }
-
 }
-
-
-
-

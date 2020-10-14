@@ -1,3 +1,5 @@
+package dictionary;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +13,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("DictionaryDes.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Controllers/DictionaryDesign.fxml"));
 
         root.setOnMousePressed(event -> {
             xOffset = event.getSceneX();

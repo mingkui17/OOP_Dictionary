@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DictionaryController">
    <children>
       <VBox layoutX="-4.0" prefHeight="420.0" prefWidth="244.0" style="-fx-background-color: #FFB6C1#FFB6C1;">
          <children>
-            <Pane prefHeight="199.0" prefWidth="222.0">
+            <Pane prefHeight="201.0" prefWidth="241.0">
                <children>
                   <Text fill="#0b0586" layoutX="62.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary" wrappingWidth="136.53125">
                      <font>
@@ -31,44 +44,59 @@
             </Pane>
             <AnchorPane prefHeight="153.0" prefWidth="244.0">
                <children>
-                  <TextField fx:id="typeAdd" layoutX="11.0" layoutY="29.0" prefHeight="35.0" prefWidth="137.0">
+                  <TextField fx:id="typeAdd" layoutX="48.0" layoutY="11.0" prefHeight="35.0" prefWidth="137.0">
                      <font>
                         <Font name="Times New Roman" size="19.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="typeRemove" layoutX="11.0" layoutY="82.0" prefHeight="35.0" prefWidth="137.0">
+                  <TextField fx:id="typeRemove" layoutX="12.0" layoutY="100.0" prefHeight="35.0" prefWidth="137.0">
                      <font>
                         <Font name="Times New Roman" size="19.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="add" layoutX="148.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#mouseClicked" prefHeight="34.0" prefWidth="83.0" text="Add">
+                  <Button fx:id="add" layoutX="187.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#mouseClicked" prefHeight="34.0" prefWidth="54.0" text="Add">
                      <padding>
                         <Insets right="-20.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="remove" layoutX="148.0" layoutY="82.0" mnemonicParsing="false" onMouseClicked="#mouseClicked" prefHeight="35.0" prefWidth="83.0" text="Remove">
+                  <Button fx:id="remove" layoutX="149.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#mouseClicked" prefHeight="35.0" prefWidth="83.0" text="Remove">
                      <padding>
                         <Insets right="-20.0" />
                      </padding>
                   </Button>
                   <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="156.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="156.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="27.0" fitWidth="25.0" layoutX="188.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../dictionaryImages/Plus.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="28.0" fitWidth="43.0" layoutX="148.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="28.0" fitWidth="43.0" layoutX="149.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../dictionaryImages/Minus.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="label1" layoutX="24.0" layoutY="127.0" prefHeight="76.0" prefWidth="206.0" textAlignment="CENTER" textFill="#0f1897">
+                  <TextField fx:id="typeAdd2" layoutX="48.0" layoutY="55.0" prefHeight="35.0" prefWidth="137.0">
                      <font>
-                        <Font name="Times New Roman Italic" size="20.0" />
+                        <Font name="Times New Roman" size="19.0" />
                      </font>
-                  </Label>
+                  </TextField>
+                  <Text fill="#700f13" fontSmoothingType="LCD" layoutX="7.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eng" wrappingWidth="56.0">
+                     <font>
+                        <Font name="Monotype Corsiva" size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#700f13" fontSmoothingType="LCD" layoutX="7.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vie" wrappingWidth="56.0">
+                     <font>
+                        <Font name="Monotype Corsiva" size="25.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
+            <Label fx:id="label1" alignment="CENTER" prefHeight="83.0" prefWidth="244.0" textAlignment="CENTER" textFill="#700f13">
+               <font>
+                  <Font name="Monotype Corsiva" size="24.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
       <VBox layoutX="239.0" layoutY="97.0" prefHeight="321.0" prefWidth="506.0">
