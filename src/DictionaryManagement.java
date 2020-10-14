@@ -59,9 +59,10 @@ public class DictionaryManagement {
     }
 
     public String addWord(String s) {
-        if (dictionaryLookup(s).equals("Not find"))
-            return "the word is in dictionary";
-        else {
+        if(!s.contains("@")) {
+            return "Please enter:" + "\n" + "\"word\" @ \"its meaning\"!";
+        }
+        if (dictionaryLookup(s).equals("Not find")) {
             int x = s.lastIndexOf("@");
             if (x != -1) {
                 en = s.substring(0, x - 1);
@@ -69,8 +70,10 @@ public class DictionaryManagement {
                 Word w = new Word(en, vi);
                 words.add(w);
             }
-            return "";
+        } else {
+            return s + " has already been" + "\n" + "in dictionary";
         }
+        return s + "\n" + " has been added";
     }
 
     public String deleteWord(String s) {
@@ -82,8 +85,8 @@ public class DictionaryManagement {
                 break;
             }
         }
-        if (check) return "the word is not in dictionary";
-        else return "";
+        if (check) return s + " is not" + "\n" + "in dictionary";
+        else return s + "\n" + " has been removed";
     }
 
     public String dictionaryExportToFile() {
