@@ -83,7 +83,7 @@ public class DictionaryManagement {
 
     public String dictionaryExportToFile() {
         try {
-            FileWriter fw = new FileWriter("D:src\\dictionaryFiles\\newDic.txt");
+            FileWriter fw = new FileWriter("src\\dictionaryFiles\\newDic.txt");
             for (Word word : words) {
                 fw.write(word.getWord_target() + " " + word.getWord_explain() + "\n");
             }

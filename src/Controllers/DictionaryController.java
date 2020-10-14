@@ -115,7 +115,5 @@ public class DictionaryController implements Initializable {
         if(event.getSource() == remove) {
             label1.setText(dicMa.deleteWord(s2));
         }
-
-
     }
 }
