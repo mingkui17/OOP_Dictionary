@@ -1,0 +1,82 @@
+Đây là file lưu những hàm yêu cầu làm trong các phiên bản commandline nhưng về sau không dùng đến.
+
++ Class DictionaryManagement
+    public Word insertFromCommandline(Scanner sc) {
+        Word w = new Word();
+        en = sc.nextLine();
+        w.setWord_target(en);
+        vi = sc.nextLine();
+        w.setWord_explain(vi);
+        return w;
+    }
+
+    public void insertFromFile() {
+        try {
+            Scanner scf = new Scanner(new File("src/dictionaryFiles/dictionaries.txt"));
+            while (scf.hasNextLine()){
+                Word w = new Word();
+                String s = scf.nextLine();
+                int x;
+                if (s.contains("@")) x = s.indexOf("@");
+                else if (s.contains("(")) x = s.indexOf("(");
+                else if (s.contains("/")) x = s.indexOf("/");
+                else x = s.length() / 2;
+                en = s.substring(0, x-1);
+                w.setWord_target(en);
+                if (s.contains("@")) vi = s.substring(x + 2);
+                else vi = s.substring(x);
+                w.setWord_explain(vi);
+                words.add(w);
+            }
+            scf.close();
+        } catch (Exception e) {
+            System.out.println("File error!");
+        }
+    }
+
++ Class Word
+package dictionary;
+
+public class Word {
+    private String word_target;
+    private String word_explain;
+
+    public String getWord_target() {
+        return word_target;
+    }
+    public String getWord_explain() {
+        return word_explain;
+    }
+
+    public void setWord_target(String s) {
+        word_target = s;
+    }
+    public void setWord_explain(String s) {
+        word_explain = s;
+    }
+
+    public Word() {
+        word_target = "hello";
+        word_explain = "xin chao";
+    }
+    public Word(String en, String vi) {
+        word_target = en;
+        word_explain = vi;
+    }
+}
+
++ Class DictionaryCommandline
+    public void showAllWords(ArrayList<Word> words) {
+        for (int i = 0; i < words.size(); i++) {
+            if (i == 0)
+                System.out.printf("%-6s%-20s%s\n", "No", "English", "Vietnamese");
+            System.out.printf("%-6s%-20s%s\n", i + 1, words.get(i).getWord_target(), words.get(i).getWord_explain());
+        }
+    }
+
+    public void dictionaryAdvanced(String s, DictionaryManagement dicMa) {
+        //System.out.println(dicMa.dictionaryLookup(s));
+        printSearch(dicMa.dictionarySearcher1(s));
+    }
+
+    

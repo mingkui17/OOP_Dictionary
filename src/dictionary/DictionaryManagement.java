@@ -5,105 +5,115 @@ import javax.speech.synthesis.Synthesizer;
 import javax.speech.synthesis.SynthesizerModeDesc;
 import java.io.File;
 import java.io.FileWriter;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class DictionaryManagement {
-    public ArrayList<Word> words = new ArrayList<>();
-    private String en, vi;
+    private Connection c = null;
 
-    public Word insertFromCommandline(Scanner sc) {
-        Word w = new Word();
-        en = sc.nextLine();
-        w.setWord_target(en);
-        vi = sc.nextLine();
-        w.setWord_explain(vi);
-        return w;
-    }
-
-    public void insertFromFile() {
+    public void insertFromDatabase() {
         try {
-            Scanner scf = new Scanner(new File("src/dictionaryFiles/dictionaries.txt"));
-            while (scf.hasNextLine()){
-                Word w = new Word();
-                String s = scf.nextLine();
-                int x;
-                if (s.contains("@")) x = s.indexOf("@");
-                else if (s.contains("(")) x = s.indexOf("(");
-                else if (s.contains("/")) x = s.indexOf("/");
-                else x = s.length() / 2;
-                en = s.substring(0, x-1);
-                w.setWord_target(en);
-                if (s.contains("@")) vi = s.substring(x + 2);
-                else vi = s.substring(x);
-                w.setWord_explain(vi);
-                words.add(w);
-            }
-            scf.close();
+            c = DriverManager.getConnection("jdbc:sqlite:a.db");
         } catch (Exception e) {
-            System.out.println("File error!");
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
         }
     }
 
     public String dictionaryLookup (String s) {
-        String lookup = "Not find";
-        for (Word w : words) {
-            if (w.getWord_target().equalsIgnoreCase(s)) {
-                String temp = w.getWord_explain();
-                int x = temp.indexOf("(");
-                int y = temp.lastIndexOf("/");
-                if (y > 0) lookup = temp.substring(0, y + 1) + "\n" + temp.substring(y + 2);
-                else if (x == 0 && y < 0) {
-                    int z = temp.lastIndexOf(")");
-                    lookup = temp.substring(0, z + 1) + "\n" + temp.substring(z + 2);
-                } else lookup = temp;
-                break;
-            }
+        try {
+            String sql = "SELECT * from dictionaries WHERE english LIKE '" + s + "'";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            String lookup = rs.getString("vietnamese");
+            rs.close();
+            return lookup;
+        } catch (Exception e) {
+            return "Not find";
         }
-        return lookup;
     }
 
     public String addWord(String s1, String s2) {
-        if (dictionaryLookup(s1).equals("Not find")) {
-            Word w = new Word(s1, s2);
-            words.add(w);
-        } else return "The word has already been" + "\n" + "in dictionary!";
-        return "The word has been added!";
+        if (!dictionaryLookup(s1).equals("Not find"))
+            return "The word has already been in dictionary!";
+        String sql = "INSERT INTO dictionaries(english,vietnamese) VALUES(?,?)";
+        try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+            pstmt.setString(1, s1);
+            pstmt.setString(2, s2);
+            pstmt.executeUpdate();
+            return "The word has been added!";
+        } catch (SQLException e) {
+            return e.getMessage();
+        }
     }
 
     public String deleteWord(String s) {
-        boolean check = true;
-        for (Word w : words) {
-            if (w.getWord_target().equalsIgnoreCase(s)) {
-                words.remove(w);
-                check = false;
-                break;
-            }
+        if (dictionaryLookup(s).equals("Not find")) return "The word is not in dictionary";
+        String sql = "DELETE from dictionaries WHERE english LIKE '" + s + "'";
+        try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+            pstmt.executeUpdate();
+            return "The word has been removed";
+        } catch (Exception e) {
+            return e.getMessage();
         }
-        if (check) return s + " is not" + "\n" + "in dictionary";
-        else return s + "\n" + " has been removed";
+    }
+
+    public String editWord(String old, String new_en, String new_vi) {
+        if (dictionaryLookup(old).equals("Not find")) return "The old word is not in dictionary";
+        try {
+            if (new_en.equals("")) {
+                String sql = "UPDATE dictionaries SET vietnamese = ? " + "WHERE english LIKE '" + old + "'";
+                PreparedStatement pstmt = c.prepareStatement(sql);
+                pstmt.setString(1, new_vi);
+                pstmt.executeUpdate();
+            }
+            else if (new_vi.equals("")) {
+                String sql = "UPDATE dictionaries SET english = ? " + "WHERE english LIKE '" + old + "'";
+                PreparedStatement pstmt = c.prepareStatement(sql);
+                pstmt.setString(1, new_en);
+                pstmt.executeUpdate();
+            }
+            else {
+                String sql = "UPDATE dictionaries SET english = ? , " + "vietnamese = ? " + "WHERE english LIKE '" + old + "'";
+                PreparedStatement pstmt = c.prepareStatement(sql);
+                pstmt.setString(2, new_vi);
+                pstmt.setString(1, new_en);
+                pstmt.executeUpdate();
+            }
+            return "The word is edited";
+        } catch (SQLException e) {
+            return e.getMessage();
+        }
+    }
+
+    public ArrayList<String> dictionarySearcher1(String s) {
+        ArrayList<String> search = new ArrayList<>();
+        try {
+            String sql = "SELECT * from dictionaries WHERE english LIKE '" + s + "%' order by LOWER(english);";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()) {
+                search.add(rs.getString("english"));
+            }
+            rs.close();
+            return search;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return search;
+        }
     }
 
     public void TextToSpeech(String s) {
         if (!dictionaryLookup(s).equals("Not find"))
             try {
-                // Set property as Kevin Dictionary
                 System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us" + ".cmu_us_kal.KevinVoiceDirectory");
-
-                // Register Engine
                 Central.registerEngineCentral("com.sun.speech.freetts" + ".jsapi.FreeTTSEngineCentral");
-
-                // Create a Synthesizer
                 Synthesizer synthesizer = Central.createSynthesizer(new SynthesizerModeDesc(Locale.US));
 
-                // Get it ready to speak
                 synthesizer.allocate();
                 synthesizer.resume();
-
-                synthesizer.speakPlainText(s, null); // speak chuoi s
-                synthesizer.waitEngineState(Synthesizer.QUEUE_EMPTY); // Wait till speaking is done
-
+                synthesizer.speakPlainText(s, null);
+                synthesizer.waitEngineState(Synthesizer.QUEUE_EMPTY);
                 //synthesizer.deallocate(); // Clean up
             }
             catch (Exception e) {
@@ -114,11 +124,19 @@ public class DictionaryManagement {
     public String dictionaryExportToFile() {
         try {
             FileWriter fw = new FileWriter("src/dictionaryFiles/newDic.txt");
-            for (Word word : words) {
-                fw.write(word.getWord_target() + " " + word.getWord_explain() + "\n");
+
+            try {
+                String sql = "SELECT * from dictionaries";
+                ResultSet rs = c.createStatement().executeQuery(sql);
+                while (rs.next()) {
+                    fw.write(rs.getString("english") + "\t" + rs.getString("vietnamese") + "\n");
+                }
+                rs.close();
+            } catch (Exception e) {
+                return "File: " + e.getMessage();
             }
             fw.close();
-            return "";
+            return "Export to file successfully";
         } catch (Exception e) {
             return "Error in export to file";
         }
