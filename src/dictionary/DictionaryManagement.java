@@ -24,9 +24,17 @@ public class DictionaryManagement {
 
     public String dictionaryLookup (String s) {
         try {
+            String lookup = "";
             String sql = "SELECT * from dictionaries WHERE english LIKE '" + s + "'";
             ResultSet rs = c.createStatement().executeQuery(sql);
-            String lookup = rs.getString("vietnamese");
+            String temp = rs.getString("vietnamese");
+            int x = temp.indexOf("(");
+            int y = temp.lastIndexOf("/");
+            if (y > 0) lookup = temp.substring(0, y + 1) + "\n" + temp.substring(y + 2);
+            else if (x == 0 && y < 0) {
+                int z = temp.lastIndexOf(")");
+                lookup = temp.substring(0, z + 1) + "\n" + temp.substring(z + 2);
+            } else lookup = temp;
             rs.close();
             return lookup;
         } catch (Exception e) {

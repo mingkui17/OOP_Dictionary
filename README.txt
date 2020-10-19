@@ -11,7 +11,12 @@ Chức năng của từ điển:
 + Đọc từ tìm được
 + Thêm từ vào kho dữ liệu của từ điển
 + Xóa từ trong kho dữ liệu của từ điển
++ Chỉnh sửa từ đã có trong kho dữ liệu
++ Xuất dữ liệu của từ điển ra file txt
 
 Library sử dụng: 
 + Đồ họa: Javafx, Scene Builder
 + Phát âm: freetts-1.2.2
++ Database: sqlite-jdbc-3.32.3.2.jar
+
+Từ điển tích hợp database, các lib đc sử dụng ở folder src.
