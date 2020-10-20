@@ -3,12 +3,10 @@ package dictionary;
 import javax.speech.Central;
 import javax.speech.synthesis.Synthesizer;
 import javax.speech.synthesis.SynthesizerModeDesc;
-import java.io.File;
 import java.io.FileWriter;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.Scanner;
 
 public class DictionaryManagement {
     private Connection c = null;
@@ -44,31 +42,31 @@ public class DictionaryManagement {
 
     public String addWord(String s1, String s2) {
         if (!dictionaryLookup(s1).equals("Not find"))
-            return "The word has already been in dictionary!";
+            return "\"" + s1 + "\"" + " has already" + "\n" + "been in dictionary!";
         String sql = "INSERT INTO dictionaries(english,vietnamese) VALUES(?,?)";
         try (PreparedStatement pstmt = c.prepareStatement(sql)) {
             pstmt.setString(1, s1);
             pstmt.setString(2, s2);
             pstmt.executeUpdate();
-            return "The word has been added!";
+            return "\"" + s1 + "\"" + " has been added!";
         } catch (SQLException e) {
             return e.getMessage();
         }
     }
 
     public String deleteWord(String s) {
-        if (dictionaryLookup(s).equals("Not find")) return "The word is not in dictionary";
+        if (dictionaryLookup(s).equals("Not find")) return "\"" + s + "\"" + " is not" + "\n" + "in dictionary";
         String sql = "DELETE from dictionaries WHERE english LIKE '" + s + "'";
         try (PreparedStatement pstmt = c.prepareStatement(sql)) {
             pstmt.executeUpdate();
-            return "The word has been removed";
+            return "\"" + s + "\"" + " has" + "\n" + "been removed";
         } catch (Exception e) {
             return e.getMessage();
         }
     }
 
     public String editWord(String old, String new_en, String new_vi) {
-        if (dictionaryLookup(old).equals("Not find")) return "The old word is not in dictionary";
+        if (dictionaryLookup(old).equals("Not find")) return "\"" + old + "\"" + " is" + "\n" + "not in dictionary";
         try {
             if (new_en.equals("")) {
                 String sql = "UPDATE dictionaries SET vietnamese = ? " + "WHERE english LIKE '" + old + "'";
@@ -89,7 +87,7 @@ public class DictionaryManagement {
                 pstmt.setString(1, new_en);
                 pstmt.executeUpdate();
             }
-            return "The word is edited";
+            return "\"" + old + "\"" + " is edited";
         } catch (SQLException e) {
             return e.getMessage();
         }

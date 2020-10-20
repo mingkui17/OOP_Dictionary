@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="407.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DictionaryController">
    <children>
@@ -31,33 +44,33 @@
             </Pane>
             <AnchorPane prefHeight="223.0" prefWidth="242.0" style="-fx-background-color: #D8BFD8#D8BFD8;">
                <children>
-                  <Button fx:id="add" layoutX="146.0" layoutY="26.0" mnemonicParsing="false" onAction="#addWindow" onMouseClicked="#mouseClicked" prefHeight="34.0" prefWidth="74.0" text="Add">
+                  <Button fx:id="add" layoutX="146.0" layoutY="12.0" mnemonicParsing="false" onAction="#addWindow" onMouseClicked="#mouseClicked" prefHeight="34.0" prefWidth="74.0" text="Add">
                      <padding>
                         <Insets right="-20.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="remove" layoutX="146.0" layoutY="77.0" mnemonicParsing="false" onAction="#removeWindow" onMouseClicked="#mouseClicked" prefHeight="35.0" prefWidth="74.0" text="Remove">
+                  <Button fx:id="remove" layoutX="146.0" layoutY="62.0" mnemonicParsing="false" onAction="#removeWindow" onMouseClicked="#mouseClicked" prefHeight="35.0" prefWidth="74.0" text="Remove">
                      <padding>
                         <Insets right="-20.0" />
                      </padding>
                   </Button>
                   <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="156.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="28.0" fitWidth="40.0" layoutX="148.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="28.0" fitWidth="40.0" layoutX="149.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../dictionaryImages/Plus.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="144.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="27.0" fitWidth="31.0" layoutX="144.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../dictionaryImages/Minus.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="edit" layoutX="146.0" layoutY="128.0" mnemonicParsing="false" onAction="#editWindow" onMouseClicked="#mouseClicked" prefHeight="34.0" prefWidth="74.0" text="Edit" AnchorPane.bottomAnchor="61.0" AnchorPane.rightAnchor="22.0">
+                  <Button fx:id="edit" layoutX="146.0" layoutY="112.0" mnemonicParsing="false" onAction="#editWindow" onMouseClicked="#mouseClicked" prefHeight="34.0" prefWidth="74.0" text="Edit" AnchorPane.bottomAnchor="77.0" AnchorPane.rightAnchor="22.0">
                      <padding>
                         <Insets right="-30.0" />
                      </padding>
                   </Button>
-                  <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="147.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="148.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../dictionaryImages/edit.png" />
                      </image>
@@ -67,11 +80,26 @@
                         <Font name="Brush Script MT Italic" size="25.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="133.0" fitWidth="139.0" layoutX="1.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="133.0" fitWidth="139.0" layoutX="1.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../dictionaryImages/extra.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="export" layoutX="120.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#exporting" prefHeight="27.0" prefWidth="115.0" text="Export To FIle">
+                     <padding>
+                        <Insets right="-25.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="122.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../dictionaryImages/export.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="labelExport" layoutX="9.0" layoutY="194.0" prefHeight="21.0" prefWidth="215.0" textFill="#0e7238" AnchorPane.rightAnchor="8.0">
+                     <font>
+                        <Font name="Times New Roman Italic" size="19.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
@@ -177,7 +205,7 @@
       </VBox>
       <Pane layoutX="239.0" layoutY="2.0" prefHeight="84.0" prefWidth="506.0" AnchorPane.leftAnchor="239.0">
          <children>
-            <AnchorPane fx:id="status" prefHeight="85.0" prefWidth="506.0" style="-fx-background-color: #FFE4E1#FFE4E1;">
+            <AnchorPane fx:id="status" prefHeight="85.0" prefWidth="512.0" style="-fx-background-color: #FFE4E1#FFE4E1;">
                <children>
                   <Text fill="#0b5b90" fontSmoothingType="LCD" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENGLISH  -  VIETNAMESE" textAlignment="CENTER" wrappingWidth="474.22900390625">
                      <font>
